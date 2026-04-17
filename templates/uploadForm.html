@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Upload and Description with QR Code</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h2>Add Story</h2>
-        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" id="image" name="image" accept="image/*" required>
-            <input type="text" id="title" name="title" placeholder="Title" required>
-            <textarea id="description" name="description" placeholder="Description" required></textarea>
-            <input type="radio" id="mode_public" name="mode" value="public" checked>
-            <label for="mode_public">Public</label>
-            <input type="radio" id="mode_private" name="mode" value="private">
-            <label for="mode_private">Private</label>
-            <input type="submit" value="Upload">
-        </form>
-    </div>
-    <script>
-        var loadFile = function(event) {
-            var output = document.getElementById('imagePreview');
-            output.style.display = 'block'; // Show the image container
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function() {
-                URL.revokeObjectURL(output.src) // Free memory when the image is loaded
-            }
-        };
-    </script>
+    <nav class="nav-bar">
+        <a href="/" class="nav-title">ToTEM</a>
+        <div class="nav-links">
+            <a href="/">Register</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/upload">Upload New Story</a>
+        </div>
+    </nav>
+    <div class="centered-wrapper">
+        <div class="container">
+            <h2>Add Story</h2>
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <input type="text" id="title" name="title" placeholder="Title" required>
+                <textarea id="description" name="description" placeholder="Description" required></textarea>
+                <input type="radio" id="mode_public" name="mode" value="public" checked>
+                <label for="mode_public">Public</label>
+                <input type="radio" id="mode_private" name="mode" value="private">
+                <label for="mode_private">Private</label>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <script>
+            var loadFile = function (event) {
+                var output = document.getElementById('imagePreview');
+                output.style.display = 'block'; // Show the image container
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // Free memory when the image is loaded
+                }
+            };
+        </script>
 </body>
+
 </html>

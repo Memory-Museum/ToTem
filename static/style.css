@@ -1,136 +1,274 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f4f4f4;
     margin: 0;
     padding: 0;
+    padding-top: 70px;
+    /* Space for fixed nav bar */
+    color: #333;
+    display: block;
+    /* Ensure no flexbox on body */
+}
+
+/* Wrapper to center content vertically (for Landing & Upload pages) */
+.centered-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: calc(100vh - 70px);
+    width: 100%;
 }
+
 .container {
     background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    /* Fallback margin if not in centered-wrapper */
 }
-h2 {
+
+h1,
+h2,
+h3 {
     text-align: center;
+    color: #2c3e50;
+    margin-top: 0;
 }
+
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
 }
-input[type="text"] {
-    padding: 10px;
+
+input[type="text"],
+input[type="file"],
+textarea {
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
 }
-input[type="submit"] {
-    padding: 10px;
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+input[type="radio"] {
+    margin: 10px 5px 10px 0;
+}
+
+label {
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+/* Buttons */
+input[type="submit"],
+button {
+    padding: 12px;
     border: none;
     border-radius: 5px;
     background: #48bbdb;
     color: white;
     cursor: pointer;
-}
-input[type="submit"]:hover {
-    background: #90e0ef;
-}
-
-/*  Style uploadForm */
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 300px; 
-}
-h2 {
-    text-align: center;
-    margin-bottom: 20px; 
-}
-form {
-    display: flex;
-    flex-direction: column;
-}
-input[type="file"],
-textarea,
-input[type="submit"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-input[type="submit"] {
-    background: #48bbdb;
-    color: white;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-    background: #90e0ef;
-}
-textarea {
-    resize: vertical;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-#qrCode {
-    margin-bottom: 20px; /* Add margin between QR code and buttons */
-}
-.qr-container {
-    margin-bottom: 20px;
-}
-
-#qrCodeImg {
-    max-width: 200px;
+input[type="submit"]:hover,
+button:hover {
+    background: #369ab7;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 5px;
+.button-container button {
+    width: auto;
+    /* Buttons in container shouldn't be full width */
+}
+
+/* Navigation Bar */
+.nav-bar {
+    background: #ffffff;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-title {
+    margin: 0;
+    color: #48bbdb;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #48bbdb;
+    background: #f0f8fa;
+}
+
+.nav-links a.active {
+    color: #fff;
     background: #48bbdb;
-    color: white;
-    cursor: pointer;
 }
 
-button:hover {
-    background: #90e0ef;
+/* Gallery Grid */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.gallery-content {
+    padding: 20px;
+}
+
+.gallery-title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.gallery-author {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* QR Code Display */
+#qrContainer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+#qrCodeImg {
+    max-width: 200px;
+    margin-bottom: 15px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .nav-title {
+        font-size: 1.5em;
+    }
+
+    /* Adjust main content padding */
+    body {
+        padding-top: 110px;
+        /* More space for stacked nav */
+    }
+
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    /* Gallery adjustments */
+    .gallery-container {
+        padding: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        /* Single column on mobile */
+        gap: 20px;
+    }
+
+    .centered-wrapper {
+        min-height: calc(100vh - 110px);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        font-size: 1.2em;
+    }
+
+    .nav-links a {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
 }

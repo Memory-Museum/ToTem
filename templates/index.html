@@ -1,21 +1,42 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en"> <!-- Starts the HTML document and specifies the language as English -->
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title> <!-- This sets the title of the document, shown in the browser's title bar or tab -->
-    <link rel="stylesheet" href="/static/style.css"> <!-- Links an external CSS file (style.css) to define the styles of the page -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Links an external CSS file (style.css) to define the styles of the page -->
 </head>
+
 <body> <!-- This is the content of the HTML document -->
-    <div class="container"> <!-- This is a division or a section in an HTML document, styled with "container" class for styling -->
-        <h2>Register</h2> <!-- This is a heading for the registration form -->
-        <form id="nameForm" action="/" method="post"> <!-- Creates a form with an ID "nameForm" for submitting user input -->
-            <input type="text" id="firstName" name="firstname" placeholder="First Name" required> <!-- An input field for the first name, marked as required -->
-            <input type="text" id="lastName" name="lastname" placeholder="Last Name" required> <!-- An input field for the last name, also required -->
-            <input type="submit" value="Next"> <!-- A submit button to send the form data -->
-        </form>
+    <nav class="nav-bar">
+        <a href="/" class="nav-title">ToTEM</a>
+        <div class="nav-links">
+            <a href="/">Register</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/upload">Upload New Story</a>
+        </div>
+    </nav>
+    <div class="centered-wrapper">
+        <div class="container">
+            <!-- This is a division or a section in an HTML document, styled with "container" class for styling -->
+            <h2>Register</h2> <!-- This is a heading for the registration form -->
+            <form id="nameForm" action="/" method="post">
+                <!-- Creates a form with an ID "nameForm" for submitting user input -->
+                <input type="text" id="firstName" name="firstname" placeholder="First Name" required>
+                <!-- An input field for the first name, marked as required -->
+                <input type="text" id="lastName" name="lastname" placeholder="Last Name" required>
+                <!-- An input field for the last name, also required -->
+                <input type="submit" value="Next"> <!-- A submit button to send the form data -->
+            </form>
+            <p style="text-align: center; margin-top: 20px;">
+                <a href="/gallery" style="color: #48bbdb; text-decoration: none;">View Public Gallery</a>
+            </p>
+        </div>
     </div>
 
     <script src="/static/script.js"></script> <!-- Links an external JavaScript file (script.js) -->
 </body>
-</html
+
+</html>

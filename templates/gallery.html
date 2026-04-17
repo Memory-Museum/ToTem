@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Gallery</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="gallery-page">
+    <nav class="nav-bar">
+        <a href="/" class="nav-title">ToTEM Gallery</a>
+        <div class="nav-links">
+            <a href="/">Register</a>
+            <a href="/gallery" class="active">Gallery</a>
+            <a href="/upload">Upload New Story</a>
+        </div>
+    </nav>
+
+    <div class="gallery-container">
+        {% for story in stories %}
+        <a href="{{ url_for('user_page', user_route=story.route) }}" class="gallery-item"
+            style="text-decoration: none; color: inherit;">
+            <img src="{{ url_for('uploaded_file', filename=story.image_filename) }}" alt="{{ story.title }}"
+                class="gallery-image">
+            <div class="gallery-content">
+                <h3 class="gallery-title">{{ story.title }}</h3>
+                <p class="gallery-author">By {{ story.firstname }} {{ story.lastname }}</p>
+                {% if story.comments %}
+                <p class="gallery-author" style="font-size: 0.8em; margin-top: 5px;">{{ story.comments|length }}
+                    Comments</p>
+                {% endif %}
+            </div>
+        </a>
+        {% else %}
+        <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #666;">
+            <h3>No public stories yet.</h3>
+            <a href="/upload" style="color: #48bbdb; text-decoration: none;">Upload a Story</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
